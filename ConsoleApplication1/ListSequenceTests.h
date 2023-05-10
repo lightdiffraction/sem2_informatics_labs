@@ -1,8 +1,8 @@
 #include <cassert>
 
-using namespace Lab2;
+using namespace Lab;
 
-namespace Lab2
+namespace Lab
 {
 	ListSequence<int>^ CreateListSequence()
 	{

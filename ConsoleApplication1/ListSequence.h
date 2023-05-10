@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace System::Collections;
-using namespace Lab2;
+using namespace Lab;
 
 template<class T>
 ref class Item
@@ -17,7 +17,7 @@ ref class Item
 };
 
 template<class T>
-ref class ListSequence
+ref class ListSequence: Sequence <T>
 {
 public:
     Item<T>^ First;
@@ -35,7 +35,7 @@ public:
             }
             else
             {
-                item->next = NULL;
+                item->next = nullptr;
             }
             if (i == 0)
             {
@@ -48,7 +48,7 @@ public:
 
     ListSequence()
     {
-        First = NULL;
+        First = nullptr;
     }
 
     ListSequence(array<T>^ items, int count)
@@ -141,6 +141,11 @@ public:
         Item<T>^ item = gcnew Item<T>();
         item->value = value;
         item->next = nullptr;
+        if (First == nullptr)
+        {
+            First = item;
+            return;
+        }
         Item<T>^ currentItem = First;
         while (currentItem->next != nullptr)
         {
@@ -151,41 +156,46 @@ public:
 
     T GetFirst()
     {
-        if (First == NULL)
+        if (First == nullptr)
         {
-            throw new IndexOutOfRangeException();
+            throw gcnew IndexOutOfRangeException();
         }
-        return ^ First;
+        int value = First->value;
+        return value;
     }
 
     T GetLast()
     {
-        if (First == NULL)
+        if (First == nullptr)
         {
-            throw new IndexOutOfRangeException();
+            throw gcnew IndexOutOfRangeException();
         }
-        Item* currentItem = First;
-        while (currentItem->next != NULL)
+        Item<T>^ currentItem = First;
+        while (currentItem->next != nullptr)
         {
             currentItem = currentItem->next;
         };
-        return ^ currentItem;
+        int value = currentItem->value;
+        return value;
     }
 
     T Get(int index)
     {
-        Item* currentItem = First;
+        Item<T>^ item = gcnew Item<T>();
+        item->next = nullptr;
+        Item<T>^ currentItem = First;
         int i = 1;
         while (i < index)
         {
             currentItem = currentItem->next;
             i++;
-            if (currentItem.next == NULL)
+            if (currentItem == nullptr)
             {
-                throw new IndexOutOfRangeException();
+                throw gcnew IndexOutOfRangeException();
             }
         };
-        return ^ currentItem;
+        int value = currentItem->value;
+        return value;
 
     }
 
@@ -196,21 +206,22 @@ public:
             Prepend(value);
             return;
         }
-        Item item;
-        item.value = value;
-        Item* currentItem = First;
+        Item<T>^ item = gcnew Item<T>();
+        item->value = value;
+        item->next = nullptr;
+        Item<T>^ currentItem = First;
         int i = 1;
         while (i < index)
         {
             currentItem = currentItem->next;
             i++;
-            if (currentItem.next == NULL)
+            if (currentItem->next == nullptr)
             {
-                throw new IndexOutOfRangeException();
+                throw gcnew IndexOutOfRangeException();
             }
         };
-        item.next->currentItem->next;
-        currentItem->next = &item;
+        item->next=currentItem->next;
+        currentItem->next = item;
 
     }
 };

@@ -13,9 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\PriorityQueue">
+      <UniqueIdentifier>{c01af972-228e-41fa-981b-f90c94f4e461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ListSequence">
+      <UniqueIdentifier>{9a0d72cb-5821-4245-8ce0-f9b7dfe9e548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ArraySequence">
+      <UniqueIdentifier>{65a57a85-9c43-4aad-94df-ac38e4010b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Polynomial">
+      <UniqueIdentifier>{fb07ee51-0de9-4baf-b54d-42fcc6abdf21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Matrix">
+      <UniqueIdentifier>{4f0a7fbe-2a35-4d09-9824-637f6111ce25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lab2.cpp">
+    <ClCompile Include="Lab3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,23 +44,113 @@
     <ClInclude Include="Sequence.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ArraySequence.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ListSequence.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Functions.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="SequenceTests.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ArraySequenceTests.h">
+    <ClInclude Include="TypeReaders.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ListSequenceTests.h">
+    <ClInclude Include="Person.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Complex.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Readers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeWriters.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="IntPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="StringPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSequence.h">
+      <Filter>Файлы заголовков\ListSequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSequenceProcessor.h">
+      <Filter>Файлы заголовков\ListSequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSequenceReaders.h">
+      <Filter>Файлы заголовков\ListSequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSequenceTests.h">
+      <Filter>Файлы заголовков\ListSequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSequenceWriters.h">
+      <Filter>Файлы заголовков\ListSequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySequence.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySequenceProcessor.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySequenceReaders.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySequenceTests.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="ArraySequenceWriters.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>Файлы заголовков\ArraySequence</Filter>
+    </ClInclude>
+    <ClInclude Include="Polynomial.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="PolynomialProcessor.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="IntPolynomialProcessor.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatPolynomialProcessor.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexPolynomialProcessor.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="PolynomialReaders.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="PolynomialWriters.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="GetOneFunctions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Файлы заголовков\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixPolynomialProcessor.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,121 +3,30 @@
 #include "ICollection.h"
 
 using namespace System::Collections;
-using namespace Lab2;
+using namespace Lab;
 
 template<class T>
-public ref class Sequence : System::Collections::IEnumerable, Lab2::ICollection<T>
+public ref class Sequence
 {
-
 public:
-    int size;
-    array<T>^ numbers;
-
     Sequence() {}
-
-    Sequence(array<T>^ items, int count)
-    {
-        numbers = gcnew array<T>(count);
-        for (int i = 0; i < count; i++)
-        {
-            numbers[i] = items[i];
-            size = count;
-        }
-    }
-
-    Sequence(Sequence<T>^ sequence)
-    {
-        numbers = gcnew array<T>(count);
-        for (int i = 0; i < count; i++)
-        {
-            numbers[i] = sequence->numbers[i];
-            size = sequence->size;
-            maxSize = size;
-        }
-    }
-
-    Sequence(int count)
-    {
-        numbers = gcnew array<T>(count);
-    }
-
-    T GetLast()
-    {
-        return numbers[size - 1];
-    }
-
-    T GetFirst()
-    {
-        return numbers[0];
-    }
 
     int GetSize()
     {
-        return size;
+        return 0;
     }
 
-    T Get(int i)
+    T^ Get(int i)
     {
-        if (i < size && i >= 0 && numbers[i] != NULL)
-        {
-            return numbers[i];
-        }
-        else
-        {
-            throw new IndexOutOfRangeException();
-        }
+        return T();
     }
 
-    T Reduce(T(*func)(array<T>^, int))
+    int Find(T^ element)
     {
-        return func(numbers, size);
+        return 0;
     }
 
-    void Map(void (*func)(array<T>^, int))
+    void Set(T^ element, int i)
     {
-        func(numbers, size);
-    }
-
-    int Find(T element)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            if (numbers[i] == element)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    void Set(T element, int i)
-    {
-        if (i < size && i >= 0)
-        {
-            numbers[i] = element;
-        }
-        else
-        {
-            throw new IndexOutOfRangeException();
-        }
-    }
-
-    virtual System::Collections::IEnumerator^ GetEnumerator()
-    {
-        return gcnew CEnumerator<T>(numbers);
-    }
-
-    void CopyTo(array<T>^ destination, int)
-    {
-        destination = gcnew array<T>(size);
-        for (int i = 0; i < size; i++)
-        {
-            destination[i] = numbers[i];
-        }
-    }
-
-    int Count()
-    {
-        return size;
     }
 };

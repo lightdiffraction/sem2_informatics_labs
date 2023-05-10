@@ -2,47 +2,50 @@
 using namespace System;
 using namespace System::Collections;
 
-template<class T>
-public ref class CEnumerator : public System::Collections::IEnumerator
+namespace Lab
 {
-private:
-    array<T>^ items;
-    int cur;
-
-public:
-    CEnumerator(array<T>^ list)
+    template<class T>
+    public ref class CEnumerator : public System::Collections::IEnumerator
     {
-        items = list;
-        cur = -1;
-    }
+    private:
+        array<T^>^ items;
+        int cur;
 
-    virtual property Object^ Current
-    {
-        Object^ get()
+    public:
+        CEnumerator(array<T^>^ list)
         {
-            try {
-                return items[cur];
-            }
-            catch (IndexOutOfRangeException^)
+            items = list;
+            cur = -1;
+        }
+
+        virtual property Object^ Current
+        {
+            Object^ get()
             {
-                Console::WriteLine("Ошибка доступа с элементу массива");
-                return nullptr;
+                try {
+                    return items[cur];
+                }
+                catch (IndexOutOfRangeException^)
+                {
+                    Console::WriteLine("Ошибка доступа к элементу массива");
+                    return nullptr;
+                }
             }
         }
-    }
 
-    virtual void Reset()
-    {
-        cur = -1;
-    }
+        virtual void Reset()
+        {
+            cur = -1;
+        }
 
-    virtual bool MoveNext()
-    {
-        cur++;
+        virtual bool MoveNext()
+        {
+            cur++;
 
-        if (cur < items->Length)
-            return true;
-        else
-            return false;
-    }
-};
+            if (cur < items->Length)
+                return true;
+            else
+                return false;
+        }
+    };
+}

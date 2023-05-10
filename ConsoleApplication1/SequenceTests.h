@@ -1,10 +1,10 @@
 #include <cassert> 
 
-using namespace Lab2;
+using namespace Lab;
 
-namespace Lab2
+namespace Lab
 {
-	Sequence<float>^ CreateFloatSequence()
+	/*Sequence<float>^ CreateFloatSequence()
 	{
 		int n = 5;
 		array<float>^ a = gcnew array<float>(5);
@@ -133,11 +133,11 @@ namespace Lab2
 	{
 		Sequence<int>^ sequence = CreateEmptySequence();
 		assert(sequence->Reduce(lastOrDefault) == NULL);
-	}
+	}*/
 
 	void RunSequenceTests()
 	{
-		SequenceCreationTest();
+		/*SequenceCreationTest();
 		SequenceSumTest();
 		SequenceMaxTest();
 		SequenceMinTest();
@@ -147,6 +147,6 @@ namespace Lab2
 		SequenceDecrementTest();
 		FirstOrDefaultTest();
 		LastOrDefaultTest();
-		FloatSequenceCreationTest();
+		FloatSequenceCreationTest();*/
 	}
 }

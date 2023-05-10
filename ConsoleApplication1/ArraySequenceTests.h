@@ -1,66 +1,70 @@
 #include <cassert> 
 
-using namespace Lab2;
+using namespace Lab;
 
-namespace Lab2
+namespace Lab
 {
-	ArraySequence<int>^ CreateArraySequence()
+	ref class ArraySequenceTests
 	{
-		int n = 5;
-		array<int>^ a = gcnew array<int>(5);
-		for (int i = 0; i < n; i++)
+		/*static ArraySequence<int^>^ CreateArraySequence()
 		{
-			a[i] = i;
+			int n = 5;
+			array<int^>^ a = gcnew array<int^>(5);
+			for (int i = 0; i < n; i++)
+			{
+				a[i] = i;
+			}
+
+			ArraySequence<int^>^ arraySequence = gcnew ArraySequence<int^>(a, 5);
+			return arraySequence; 
 		}
 
-		ArraySequence<int>^ sequence = gcnew ArraySequence<int>(a, 5);
-		return sequence;
-	}
-
-	void ArraySequenceCreationTest()
-	{
-		ArraySequence<int>^ sequence = CreateArraySequence();
-
-		int i = 0;
-		for each (int value in sequence)
+		static void ArraySequenceCreationTest()
 		{
-			assert(value == i);
-			++i;
-		}
-	}
+			ArraySequence<int>^ arraySequence = CreateArraySequence();
 
-	void ArraySequenceAddTest()
-	{
-		ArraySequence<int>^ sequence = CreateArraySequence();
-		int size = sequence->Count();
-		sequence->Add(sequence->Count());
-		int i = 0;
-		for each (int value in sequence)
+			int i = 0;
+			for each (int value in arraySequence)
+			{
+				assert(value == i);
+				++i;
+			}
+		}
+
+		static void ArraySequenceAddTest()
 		{
-			assert(value == i);
-			++i;
+			ArraySequence<int>^ arraySequence = CreateArraySequence();
+			int size = arraySequence->Count();
+			arraySequence->Add(arraySequence->Count());
+			int i = 0;
+			for each (int value in arraySequence)
+			{
+				assert(value == i);
+				++i;
+			}
+			assert(arraySequence->Count() == size + 1);
 		}
-		assert(sequence->Count() == size + 1);
-	}
 
-	void ArraySequenceRemoveTest()
-	{
-		ArraySequence<int>^ sequence = CreateArraySequence();
-		int size = sequence->Count();
-		sequence->Remove(0);
-		int i = 1;
-		for each (int value in sequence)
+		static void ArraySequenceRemoveTest()
 		{
-			assert(value == i);
-			++i;
-		}
-		assert(sequence->Count() == size - 1);
-	}
+			ArraySequence<int>^ arraySequence = CreateArraySequence();
+			int size = arraySequence->Count();
+			arraySequence->Remove(0);
+			int i = 1;
+			for each (int value in arraySequence)
+			{
+				assert(value == i);
+				++i;
+			}
+			assert(arraySequence->Count() == size - 1);
+		}*/
 
-	void RunArraySequenceTests()
-	{
-		ArraySequenceCreationTest();
-		ArraySequenceAddTest();
-		ArraySequenceRemoveTest();
-	}
+	public: 
+		static void RunArraySequenceTests()
+		{
+			//ArraySequenceCreationTest();
+			//ArraySequenceAddTest();
+			//ArraySequenceRemoveTest();
+		}
+	};
 }

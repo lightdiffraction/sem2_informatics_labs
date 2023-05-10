@@ -1,4 +1,4 @@
-namespace Lab2
+namespace Lab
 {
 	template<class T>
 	public ref class ICollection 

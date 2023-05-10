@@ -1,81 +1,113 @@
 #include <iostream>
 
 using namespace System::Collections;
-using namespace Lab2;
+using namespace Lab;
 
-template<class T>
-ref class ArraySequence : Sequence<T>
+namespace Lab
 {
-
-public:
-    ArraySequence()
+    template<class T>
+    public ref class ArraySequence : Sequence<T>, System::Collections::IEnumerable
     {
-    }
+    public:
+        DynamicArray<T>^ dynamicArray;
 
-    ArraySequence(int count) : Sequence(count)
-    {
-    }
-
-    ArraySequence(array<T>^ items, int count) : Sequence(items, count)
-    {
-    }
-
-private:
-    void Resize(int newSize)
-    {
-        array<T>^ temp = gcnew array<T>(size);
-        for (int i = 0; i < size; i++)
+    public:
+        ArraySequence()
         {
-            temp[i] = numbers[i];
+            dynamicArray = gcnew DynamicArray<T>();
         }
 
-        numbers = gcnew array<int>(newSize);
-        int n = size < newSize ? size : newSize;
-        for (int i = 0; i < n; i++)
+        ArraySequence(int count)
         {
-            numbers[i] = temp[i];
+            dynamicArray = gcnew DynamicArray<T>(count);
         }
 
-        size = newSize;
-    }
-
-public:
-    void Add(T value)
-    {
-        Resize(size + 1);
-        numbers[size - 1] = value;
-    }
-
-    void Remove(int index)
-    {
-        if (index < 0 || index >= size)
+        /*ArraySequence(array<T^>^ items, int count)
         {
-            throw gcnew IndexOutOfRangeException();
+            dynamicArray = gcnew DynamicArray<T>(items, count);
         }
 
-        for (int i = index; i < size - 1; i++)
+        ArraySequence(T^ items, int count)
         {
-            numbers[i] = numbers[i + 1];
+            dynamicArray = gcnew DynamicArray<T>(items, count);
+        }*/
+
+        T^ Get(int index)
+        {
+            return dynamicArray->Get(index);
         }
 
-        Resize(size - 1);
-    }
-
-    void InsertAt(int index, T value)
-    {
-        if (index < 0 || index >= this.size)
+        int GetSize()
         {
-            throw gcnew IndexOutOfRangeException();
+            return dynamicArray->Count();
         }
 
-        Resize();
-
-        for (int i = index + 1; i < this.size; i++)
+        T^ Reduce(T ^ (*func)(array<T^>^, int))
         {
-            numbers[i] = numbers[i - 1];
+            return dynamicArray->Reduce(func);
         }
 
-        numbers[index] = value;
-        ++this.size;
-    }
-};
+        /*void Map(System::Void(func^)(array<T^>^, int))
+        {
+            dynamicArray->Map(func);
+        }*/
+
+        T^ GetLast()
+        {
+            dynamicArray->GetLast();
+        }
+
+        T^ GetFirst()
+        {
+            return dynamicArray->GetFirst();
+        }
+
+        void Set(T^ value, int index)
+        {
+            dynamicArray->Set(value, index);
+        }
+
+        void Add(T^ value)
+        {
+            dynamicArray->Resize(GetSize() + 1);
+            Set(value, GetSize() - 1);
+        }
+
+        void Remove(int index)
+        {
+            if (index < 0 || index >= GetSize())
+            {
+                throw gcnew IndexOutOfRangeException();
+            }
+
+            for (int i = index; i < GetSize() - 1; i++)
+            {
+                Set(Get(i+1), i);
+            }
+
+            dynamicArray->Resize(GetSize() - 1);
+        }
+
+        void InsertAt(Int32 index, T^ value)
+        {
+            if (index < 0 || index >= GetSize())
+            {
+                throw gcnew IndexOutOfRangeException();
+            }
+
+            dynamicArray->Resize(GetSize() + 1);
+
+            for (int i = index + 1; i < GetSize(); i++)
+            {
+                Set(Get(i-1), i);
+            }
+
+            Set(value, index);
+        }
+
+        virtual System::Collections::IEnumerator^ GetEnumerator()
+        {
+            return gcnew CEnumerator<T>(dynamicArray->items);
+        }
+    };
+}

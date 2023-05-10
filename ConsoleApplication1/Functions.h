@@ -1,99 +1,145 @@
-namespace Lab2
+namespace Lab
 {
+
+    Single^ operator^(Single^ t1, int pow)
+    {
+        Single res = Math::Pow(*t1, pow);
+        Single^ ptr = dynamic_cast<Single^>((Object^)res);
+        return ptr;
+    }
+
+    Int32^ operator^(Int32^ t1, int pow)
+    {
+        Single sT1 = Convert::ToSingle(*t1);
+        Single res = Math::Pow(sT1, pow);
+        Int32^ ptr = dynamic_cast<Int32^>((Object^)Convert::ToInt32(res));
+        return ptr;
+    }
+
+    Int32^ operator*(Int32^ t1, Int32^ t2)
+    {
+        Int32 res = *t1 * *t2;
+        Int32^ ptr = dynamic_cast<Int32^>((Object^)res);
+        return ptr;
+    }
+
+    Single^ operator*(Single^ t1, Single^ t2)
+    {
+        Single res = *t1 * *t2;
+        Single^ ptr = dynamic_cast<Single^>((Object^)res);
+        return ptr;
+    }
+
+    Int32^ operator+(Int32^ t1, Int32^ t2)
+    {
+        Int32 res = *t1 + *t2;
+        Int32^ ptr = dynamic_cast<Int32^>((Object^)res);
+        return ptr;
+    }
+
+    Single^ operator+(Single^ t1, Single^ t2)
+    {
+        Single res = *t1 + *t2;
+        Single^ ptr = dynamic_cast<Single^>((Object^)res);
+        return ptr;
+    }
+
     template<typename T>
-    T sum(array<T>^ numbers, int count)
+    T^ sum(array<T^>^ items, int count)
     {
         T result = 0;
+
+
         for (T i = 0; i < count; i++)
         {
-            result += numbers[i];
+            result += items[i];
         }
         return result;
     }
 
     template<typename T>
-    T max(array<T>^ numbers, int count)
+    T max(array<T>^ items, int count)
     {
         T max = INT32_MIN;
         for (int i = 0; i < count; i++)
         {
-            if (numbers[i] > max)
+            if (items[i] > max)
             {
-                max = numbers[i];
+                max = items[i];
             }
         }
         return max;
     }
 
     template<typename T>
-    T min(array<T>^ numbers, int count)
+    T min(array<T>^ items, int count)
     {
         T min = INT32_MAX;
         for (int i = 0; i < count; i++)
         {
-            if (numbers[i] < min)
+            if (items[i] < min)
             {
-                min = numbers[i];
+                min = items[i];
             }
         }
         return min;
     }
 
     template<typename T>
-    T first(array<T>^ numbers, int count)
+    T^ first(array<T^>^ items, int count)
     {
         if (count == 0)
         {
             throw gcnew InvalidOperationException();
         }
-        return numbers[0];
+        return items[0];
     }
 
     template<typename T>
-    T firstOrDefault(array<T>^ numbers, int count)
+    T firstOrDefault(array<T>^ items, int count)
     {
         if (count == 0)
         {
             return T();
         }
-        return numbers[0];
+        return items[0];
     }
 
     template<typename T>
-    T last(array<T>^ numbers, int count)
+    T last(array<T>^ items, int count)
     {
         if (count == 0)
         {
             throw gcnew InvalidOperationException();
         }
-        return numbers[count - 1];
+        return items[count - 1];
     }
 
     template<typename T>
-    T lastOrDefault(array<T>^ numbers, int count)
+    T lastOrDefault(array<T>^ items, int count)
     {
         if (count == 0)
         {
             return T();
         }
-        return numbers[count - 1];
+        return items[count - 1];
     }
 
     template<typename T>
-    void increment(array<T>^ numbers, int count)
+    void increment(array<T>^ items, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            numbers[i]++;
+            items[i]++;
         }
     }
 
     template<typename T>
-    void decrement(array<T>^ numbers, int count)
+    void decrement(array<T>^ items, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            numbers[i]--;
+            items[i]--;
         }
     }
 }
