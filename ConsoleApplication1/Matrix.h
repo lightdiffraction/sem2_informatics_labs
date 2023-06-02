@@ -128,6 +128,23 @@ namespace Lab
             return res;
         }
 
+        Matrix<T>^ operator*(Int32^ k)
+        {
+
+            Matrix<T>^ res = gcnew Matrix(size);
+            res->size = size;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    (res->items)[i][j] = *(gcnew T());
+                    (res->items)[i][j] = *k * (items)[i][j];
+                }
+            }
+            return res;
+        }
+
         Matrix<T>^ operator^(int pow)
         {
             Matrix<T>^ res = gcnew Matrix<T> (size, 'I');

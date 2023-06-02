@@ -60,7 +60,7 @@ namespace Lab
 		}*/
 
 	public: 
-		static void RunArraySequenceTests()
+		static void Run()
 		{
 			//ArraySequenceCreationTest();
 			//ArraySequenceAddTest();

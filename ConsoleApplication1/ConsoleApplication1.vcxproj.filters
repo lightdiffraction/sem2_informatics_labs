@@ -28,6 +28,9 @@
     <Filter Include="Файлы заголовков\Matrix">
       <UniqueIdentifier>{4f0a7fbe-2a35-4d09-9824-637f6111ce25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\BinaryTree">
+      <UniqueIdentifier>{ce56e6d8-bf47-400c-86a7-2ac684ede071}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab3.cpp">
@@ -45,9 +48,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Functions.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="SequenceTests.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TypeReaders.h">
@@ -151,6 +151,51 @@
     </ClInclude>
     <ClInclude Include="MatrixPolynomialProcessor.h">
       <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueueTests.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="PolynomialTests.h">
+      <Filter>Файлы заголовков\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionPriorityQueueProcessor.h">
+      <Filter>Файлы заголовков\PriorityQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeNode.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="IntBinaryTreeProcessor.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeReaders.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeProcessor.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeOrder.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Comparers.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="IntBinaryTreeTests.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatBinaryTreeTests.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatBinaryTreeProcessor.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeStringWriter.h">
+      <Filter>Файлы заголовков\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueueOrder.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueueStringWriter.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

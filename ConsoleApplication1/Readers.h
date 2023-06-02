@@ -22,7 +22,7 @@ namespace Lab
     String^ ReadElementType()
     {
         String^ elementType;
-        Console::Write("Enter element type (int, float, complex, string, student, matrix): ");
+        Console::Write("Enter element type (int, float, complex, string, student, matrix, function): ");
         elementType = Console::ReadLine();
         return elementType;
     }
@@ -30,7 +30,7 @@ namespace Lab
     String^ ReadSequenceType()
     {
         String^ sequenceType;
-        Console::Write("Enter sequence type (ArraySequence, LinkedList, PriorityQueue, Polynomial): ");
+        Console::Write("Enter sequence type (ArraySequence, LinkedList, PriorityQueue, Polynomial, BinaryTree): ");
         sequenceType = Console::ReadLine();
         return sequenceType;
     }

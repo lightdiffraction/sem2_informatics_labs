@@ -41,14 +41,14 @@ namespace Lab
                 result = gcnew T();
             }
 
-            for (int i =  0; i < Coefficients->GetSize(); i++)
+            for (int i = 0; i < Coefficients->GetSize(); i++)
             {
                 T^ coeff;
 
                 if (isParam)
                 {
                     coeff = gcnew T(param);
-                } 
+                }
                 else
                 {
                     coeff = gcnew T();
@@ -62,6 +62,117 @@ namespace Lab
 
             return result;
         }
+
+        Polynomial^ operator*(Polynomial^ obj)
+        {
+            Polynomial^ polynomial = gcnew Polynomial();
+            int size = Coefficients->GetSize() + obj->Coefficients->GetSize() - 1;  
+            for (int q = 0; q < size; q++)
+            {
+                T^ res;
+                if (isParam)
+                {
+                    res = gcnew T(param);
+                }
+
+                else
+                {   
+                    res = gcnew T();
+                }
+
+                for (int i = 0; i < Coefficients->GetSize(); i++)
+                {
+                    for (int j = 0; j < obj->Coefficients->GetSize(); j++)
+                    {
+                        if (Coefficients->GetSize() - i - 1 + obj->Coefficients->GetSize() - j - 1 == size - q - 1)
+                        {
+                            res = res + Coefficients->Get(i) * obj->Coefficients->Get(j);
+                        }
+                    }
+                }
+                polynomial->Coefficients->Add(res);
+            }
+            return polynomial;
+        }
+
+        Polynomial^ operator+(Polynomial^ obj)
+        {
+            Polynomial^ polynomial = gcnew Polynomial();
+            int size = std::max(Coefficients->GetSize(), obj->Coefficients->GetSize());
+            int m1 = size - Coefficients->GetSize();
+            int m2 = size - obj->Coefficients->GetSize();
+            for (int q = 0; q < size; q++)
+            {
+                T^ res;
+                if (isParam)
+                {
+                    res = gcnew T(param);
+                }
+
+                else
+                {
+                    res = gcnew T();
+                }
+
+                if ((q - m1) < Coefficients->GetSize() && (q - m1) >= 0)
+                {
+                    res = res + Coefficients->Get(q - m1);
+                }
+
+                if ((q - m2) < obj->Coefficients->GetSize() && (q - m2) >= 0)
+                {
+                    res = res + obj->Coefficients->Get(q - m2);
+                }
+
+                polynomial->Coefficients->Add(res);
+            }
+            return polynomial;
+        }
+
+        Polynomial^ operator*(T^ obj)
+        {
+            Polynomial^ polynomial = gcnew Polynomial();
+            int size = Coefficients->GetSize();
+            for (int q = 0; q < size; q++)
+            {
+                T^ res;
+                if (isParam)
+                {
+                    res = gcnew T(param);
+                }
+
+                else
+                {
+                    res = gcnew T();
+                }
+                res = Coefficients->Get(q) * obj;
+                polynomial->Coefficients->Add(res);
+            }
+            return polynomial;
+        }
+
+        Polynomial^ operator/(Int32^ obj)
+        {
+            Polynomial^ polynomial = gcnew Polynomial();
+            int size = Coefficients->GetSize();
+            for (int q = 0; q < size; q++)
+            {
+                T^ res;
+                if (isParam)
+                {
+                    res = gcnew T(param);
+                }
+
+                else
+                {
+                    res = gcnew T();
+                }
+                res = Coefficients->Get(q) * obj;
+                polynomial->Coefficients->Add(res);
+            }
+            return polynomial;
+        }
+
 
         int Count()
         {

@@ -24,5 +24,9 @@ namespace Lab
         {
             ProcessStudentPriorityQueue();
         }
+        else if (elementType == "function")
+        {
+            ProcessFunctionPriorityQueue<int>();
+        }
     }
 }

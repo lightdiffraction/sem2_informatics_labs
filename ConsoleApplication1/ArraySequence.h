@@ -47,10 +47,10 @@ namespace Lab
             return dynamicArray->Reduce(func);
         }
 
-        /*void Map(System::Void(func^)(array<T^>^, int))
+        void Map(void (*func)(array<T^>^, int))
         {
             dynamicArray->Map(func);
-        }*/
+        }
 
         T^ GetLast()
         {
@@ -71,6 +71,19 @@ namespace Lab
         {
             dynamicArray->Resize(GetSize() + 1);
             Set(value, GetSize() - 1);
+        }
+
+        bool Contains(T^ value, int (*comparer)(T^ value1, T^ value2))
+        {
+            for (int i = 0; i < GetSize(); i++)
+            {
+                if (comparer(Get(i), value) == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         void Remove(int index)

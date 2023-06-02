@@ -9,6 +9,7 @@ ref class Item
     public:
         T value;
         Item^ next;
+
         Item()
         {
             value = NULL;

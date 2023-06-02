@@ -12,9 +12,19 @@ namespace Lab
 		Console::WriteLine(value);
 	}
 
+	void WriteIntTreeNode(Int32 value)
+	{
+		Console::Write(" {0} ", value);
+	}
+
 	void WriteFloat(Single^ value)
 	{
 		Console::WriteLine(value);
+	}
+
+	void WriteFloatTreeNode(Single value)
+	{
+		Console::Write(" {0} ", value);
 	}
 
 	void WriteString(String^ value)
@@ -67,5 +77,45 @@ namespace Lab
 		}
 
 		Console::WriteLine();
+	}
+
+	String^ IntToString(Int32^ value)
+	{
+		return value->ToString();
+	}
+
+	String^ FloatToString(float value)
+	{
+		return value.ToString();
+	}
+
+	String^ StringToString(String^ value)
+	{
+		return value;
+	}
+
+	String^ StudentToString(Student value)
+	{
+		return	value.GetFirstName(), value.GetLastName(), String::Format("{0:dd/MM/yyyy}", value.GetDate());
+	}
+
+	String^ ComplexToString(Complex^ value)
+	{
+		return value->Real->ToString() + "+" + value->Imaginary->ToString() + "i";
+	}
+
+	String^ FuncToString(Func<int>^ value)
+	{
+		return value->ToString();
+	}
+	
+	String^ IntTreeNodeToString(Int32 value)
+	{
+		return value.ToString();
+	}
+
+	String^ FloatTreeNodeToString(Single value)
+	{
+		return value.ToString();
 	}
 }

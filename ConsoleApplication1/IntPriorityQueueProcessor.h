@@ -62,7 +62,7 @@ namespace Lab
 
         while (true)
         {
-            Console::Write("Enter operation: insert, extract, exit: ");
+            Console::Write("Enter operation: insert, extract, find, remove, getsubqueue, tostring, exit: ");
             String^ operation = Console::ReadLine();
 
             if (operation == "insert")
@@ -79,6 +79,74 @@ namespace Lab
                 Element<Int32^>^ min = priorityQueue->ExtractMinimum();
                 Console::WriteLine("Min priority {0}", min->Priority);
                 WriteIntPriorityQueue(priorityQueue);
+            }
+
+            if (operation == "find")
+            {
+                int priority = ReadInt32Value("Enter priority to find: ");
+                Element<Int32^>^ result = priorityQueue->Find(priority);
+                if (result == nullptr)
+                {
+                    Console::WriteLine("Element with this priority not found.");
+                }
+                else
+                {
+                    Console::Write("Element with this priority found: ");
+                    WriteInt(result->Value);
+                }
+            }
+
+            if (operation == "remove")
+            {
+                int priority = ReadInt32Value("Enter priority to remove: ");
+                priorityQueue->Remove(priority);
+                WriteIntPriorityQueue(priorityQueue);
+            }
+
+            if (operation == "getsubqueue")
+            {
+                int priority = ReadInt32Value("Enter priority of element to get sub queue of: ");
+                Element<Int32^>^ element = priorityQueue->Find(priority);
+                if (element == nullptr)
+                {
+                    Console::WriteLine("Element with this priority not found.");
+                }
+                else
+                {
+                    PriorityQueue<Int32^>^ newQueue = priorityQueue->GetSubQueue(element);
+                    WriteIntPriorityQueue(newQueue);
+                }
+            }
+
+            if (operation == "tostring")
+            {
+                String^ command = ReadString("Enter order (ÊËÏ, ÊÏË, ËÊÏ, ÏÊË, ËÏÊ, ÏËÊ): ");
+                String^ result = gcnew String("");
+                if (command == "ÊËÏ")
+                {
+                    result = priorityQueue->PreOrderLeftRight(0, "", IntToString);
+                }
+                if (command == "ÊÏË")
+                {
+                    result = priorityQueue->PreOrderRightLeft(0, "", IntToString);
+                }
+                if (command == "ËÊÏ")
+                {
+                    result = priorityQueue->InOrderLeftRight(0, "", IntToString);
+                }
+                if (command == "ÏÊË")
+                {
+                    result = priorityQueue->InOrderRightLeft(0, "", IntToString);
+                }
+                if (command == "ËÏÊ")
+                {
+                    result = priorityQueue->PostOrderLeftRight(0, "", IntToString);
+                }
+                if (command == "ÏËÊ")
+                {
+                    result = priorityQueue->PostOrderRightLeft(0, "", IntToString);
+                }
+                Console::WriteLine(result);
             }
 
             if (operation == "exit")

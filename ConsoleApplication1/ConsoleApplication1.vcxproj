@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -137,6 +137,16 @@
   <ItemGroup>
     <ClInclude Include="ArraySequenceProcessor.h" />
     <ClInclude Include="ArraySequenceReaders.h" />
+    <ClInclude Include="BinaryTreeNode.h" />
+    <ClInclude Include="BinaryTreeOrder.h" />
+    <ClInclude Include="BinaryTreeProcessor.h" />
+    <ClInclude Include="BinaryTreeStringWriter.h" />
+    <ClInclude Include="FloatBinaryTreeProcessor.h" />
+    <ClInclude Include="FloatBinaryTreeTests.h" />
+    <ClInclude Include="IntBinaryTreeTests.h" />
+    <ClInclude Include="Comparers.h" />
+    <ClInclude Include="IntBinaryTreeProcessor.h" />
+    <ClInclude Include="BinaryTreeReaders.h" />
     <ClInclude Include="Complex.h" />
     <ClInclude Include="ComplexPolynomialProcessor.h" />
     <ClInclude Include="ComplexPriorityQueueProcessor.h" />
@@ -146,6 +156,7 @@
     <ClInclude Include="Enumerator.h" />
     <ClInclude Include="FloatPolynomialProcessor.h" />
     <ClInclude Include="FloatPriorityQueueProcessor.h" />
+    <ClInclude Include="FunctionPriorityQueueProcessor.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="GetOneFunctions.h" />
     <ClInclude Include="ICollection.h" />
@@ -162,13 +173,16 @@
     <ClInclude Include="Polynomial.h" />
     <ClInclude Include="PolynomialProcessor.h" />
     <ClInclude Include="PolynomialReaders.h" />
+    <ClInclude Include="PolynomialTests.h" />
     <ClInclude Include="PolynomialWriters.h" />
     <ClInclude Include="PriorityQueue.h" />
+    <ClInclude Include="PriorityQueueOrder.h" />
     <ClInclude Include="PriorityQueueProcessor.h" />
+    <ClInclude Include="PriorityQueueStringWriter.h" />
+    <ClInclude Include="PriorityQueueTests.h" />
     <ClInclude Include="Readers.h" />
     <ClInclude Include="TypeReaders.h" />
     <ClInclude Include="Sequence.h" />
-    <ClInclude Include="SequenceTests.h" />
     <ClInclude Include="StringPriorityQueueProcessor.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="StudentPriorityQueueProcessor.h" />

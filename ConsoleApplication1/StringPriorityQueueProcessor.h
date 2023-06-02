@@ -62,7 +62,7 @@ namespace Lab
 
         while (true)
         {
-            Console::Write("Enter operation: insert, extract, exit: ");
+            Console::Write("Enter operation: insert, extract, find, remove, getsubqueue, exit: ");
             String^ operation = Console::ReadLine();
 
             if (operation == "insert")
@@ -80,6 +80,45 @@ namespace Lab
                 Console::WriteLine("Min priority {0}", min->Priority);
                 WriteStringPriorityQueue(priorityQueue);
             }
+
+            if (operation == "find")
+            {
+                int priority = ReadInt32Value("Enter priority to find: ");
+                Element<String^>^ result = priorityQueue->Find(priority);
+                if (result == nullptr)
+                {
+                    Console::WriteLine("Element with this priority not found.");
+                }
+                else
+                {
+                    Console::Write("Element with this priority found: ");
+                    WriteString(result->Value);
+                }
+            }
+
+            if (operation == "remove")
+            {
+                int priority = ReadInt32Value("Enter priority to remove: ");
+                priorityQueue->Remove(priority);
+                WriteStringPriorityQueue(priorityQueue);
+            }
+
+            if (operation == "getsubqueue")
+            {
+                int priority = ReadInt32Value("Enter priority of element to get sub queue of: ");
+                Element<String^>^ element = priorityQueue->Find(priority);
+                if (element == nullptr)
+                {
+                    Console::WriteLine("Element with this priority not found.");
+                }
+                else
+                {
+                    PriorityQueue<String^>^ newQueue = priorityQueue->GetSubQueue(element);
+                    WriteStringPriorityQueue(newQueue);
+                }
+            }
+
+
 
             if (operation == "exit")
             {

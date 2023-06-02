@@ -16,12 +16,16 @@
 #include <iostream>
 #include <string>
 #include "Enumerator.h"
+#include "Enums.h"
 #include "Sequence.h"
 #include "DynamicArray.h"
 #include "ArraySequence.h"
 #include "ListSequence.h"
 #include "Functions.h"
 #include "Polynomial.h"
+#include "Comparers.h"
+#include "BinaryTreeNode.h"
+#include "BinaryTreeStringWriter.h"
 #include "Complex.h"
 #include "Person.h"
 #include "Student.h"
@@ -34,6 +38,7 @@
 #include "ArraySequenceWriters.h"
 #include "PolynomialReaders.h"
 #include "PolynomialWriters.h"
+#include "BinaryTreeReaders.h"
 #include "PriorityQueue.h"
 #include "SequenceTests.h"
 #include "ArraySequenceTests.h"
@@ -47,12 +52,21 @@
 #include "ComplexPolynomialProcessor.h"
 #include "MatrixPolynomialProcessor.h"
 #include "PolynomialProcessor.h"
+#include "FunctionPriorityQueueProcessor.h"
 #include "StringPriorityQueueProcessor.h"
 #include "StudentPriorityQueueProcessor.h"
 #include "PriorityQueueProcessor.h"
 #include "ListSequenceReaders.h"
 #include "ListSequenceWriters.h"
 #include "ListSequenceProcessor.h"
+#include "BinaryTreeOrder.h"
+#include "IntBinaryTreeProcessor.h"
+#include "FloatBinaryTreeProcessor.h"
+#include "BinaryTreeProcessor.h"
+#include "IntBinaryTreeTests.h"
+#include "FloatBinaryTreeTests.h"
+#include "PolynomialTests.h"
+#include "PriorityQueueTests.h"
 
 
 using namespace System;
@@ -64,13 +78,16 @@ namespace Lab
 {
     void RunTests()
     {
-        RunSequenceTests();
-        ArraySequenceTests::RunArraySequenceTests();
-        RunListSequenceTests();
+        ArraySequenceTests::Run();
+        ListSequenceTests::Run();
+        PriorityQueueTests::Run();
+        PolynomialTests::Run();
+        IntBinaryTreeTests::Run();
+        FloatBinaryTreeTests::Run();
     }
 }
 
-    //right click project name in the solution explorer "Lab3" / Properties / Configuration properties / Debugging / Command Arguments
+    //right click project name in the solution explorer "Lab3" / Properties / Configuration properties / Debugging / Command Arguments -> type "tests"
     int main(int argc, char* argv[])
     {
         if (argc == 2 && strcmp(argv[1], "tests") == 0)
@@ -102,6 +119,10 @@ namespace Lab
                     exit(0);
                 }
                 ProcessPolynomial(elementType);
+            }
+            else if (sequenceType == "BinaryTree")
+            {
+                ProcessBinaryTree(elementType);
             }
         }
     }
