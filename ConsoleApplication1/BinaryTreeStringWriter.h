@@ -5,15 +5,15 @@ namespace Lab
     {
 
     private: 
-        static String^ RootToString(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ RootToString(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
-            result += "{" + func(*(node->GetValue())) + "}";
+            result += "{" + func(node->GetValue()) + "}";
             return result;
         }
 
-        static String^ LeftToString(String^ (*orderFunc)(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result), 
+        static String^ LeftToString(String^ (*orderFunc)(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result), 
             BinaryTreeNode<T>^ node, 
-            String ^ (*func)(T value), 
+            String ^ (*func)(T^ value), 
             String^ result)
         {
             if (node->GetLeft() != nullptr)
@@ -26,9 +26,9 @@ namespace Lab
             return result;
         }
 
-        static String^ RightToString(String ^ (*orderFunc)(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result),
+        static String^ RightToString(String ^ (*orderFunc)(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result),
             BinaryTreeNode<T>^ node,
-            String ^ (*func)(T value),
+            String ^ (*func)(T^ value),
             String^ result)
         {
             if (node->GetRight() != nullptr)
@@ -42,36 +42,36 @@ namespace Lab
         }
 
     public:
-        static String^ ToString(String^ command, BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ ToString(String^ command, BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
-            if (command == " Àœ")
+            if (command == "RLR")
             {
                 return PreOrderLeftRight(node, func, result);
             }
-            if (command == " œÀ")
+            if (command == "RRL")
             {
                 return PreOrderRightLeft(node, func, result);
             }
-            if (command == "À œ")
+            if (command == "LRR")
             {
                 return InOrderLeftRight(node, func, result);
             }
-            if (command == "œ À")
+            if (command == "RRL")
             {
                 return InOrderRightLeft(node, func, result);
             }
-            if (command == "Àœ ")
+            if (command == "LRR")
             {
                 return PostOrderLeftRight(node, func, result);
             }
-            if (command == "œÀ ")
+            if (command == "RLR")
             {
                 return PostOrderRightLeft(node, func, result);
             }
             return result;
         }
 
-        static String^ PreOrderLeftRight(BinaryTreeNode<T>^ node, String^ (*func)(T value), String^ result)
+        static String^ PreOrderLeftRight(BinaryTreeNode<T>^ node, String^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {
@@ -84,7 +84,7 @@ namespace Lab
             return result;
         }
 
-        static String^ PreOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ PreOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {
@@ -97,7 +97,7 @@ namespace Lab
             return result;
         }
 
-        static String^ InOrderLeftRight(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ InOrderLeftRight(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {
@@ -110,7 +110,7 @@ namespace Lab
             return result;
         }
 
-        static String^ InOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ InOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {
@@ -123,7 +123,7 @@ namespace Lab
             return result;
         }
 
-        static String^ PostOrderLeftRight(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ PostOrderLeftRight(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {
@@ -136,7 +136,7 @@ namespace Lab
             return result;
         }
 
-        static String^ PostOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T value), String^ result)
+        static String^ PostOrderRightLeft(BinaryTreeNode<T>^ node, String ^ (*func)(T^ value), String^ result)
         {
             if (node == nullptr)
             {

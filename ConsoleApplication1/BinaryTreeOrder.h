@@ -3,7 +3,7 @@ using namespace Lab;
 namespace Lab
 {
     template <class T>
-    void OrderBinaryTree(BinaryTreeNode<T>^ node, void (*func)(T value))
+    void OrderBinaryTree(BinaryTreeNode<T>^ node, void (*func)(T^ value))
     {
         if (node == nullptr)
         {
@@ -23,7 +23,7 @@ namespace Lab
     };
 
     template <class T>
-    void OrderAllBinaryTree(BinaryTreeNode<T>^ node, void (*func)(T value))
+    void OrderAllBinaryTree(BinaryTreeNode<T>^ node, void (*func)(T^ value))
     {
         if (node == nullptr)
         {
@@ -37,27 +37,27 @@ namespace Lab
             return;
         }
 
-        Console::WriteLine("Œ·ıÓ‰  Àœ:");
+        Console::WriteLine("RLR:");
         BinaryTreeNode<T>::PreOrderLeftRight(node, func);
         Console::WriteLine();
 
-        Console::WriteLine("Œ·ıÓ‰  œÀ:");
-        BinaryTreeNode<T>::PreOrderLeftRight(node, func);
+        Console::WriteLine("RRL:");
+        BinaryTreeNode<T>::PreOrderRightLeft(node, func);
         Console::WriteLine();
 
-        Console::WriteLine("Œ·ıÓ‰ À œ:");
+        Console::WriteLine("LRR:");
         BinaryTreeNode<T>::InOrderLeftRight(node, func);
         Console::WriteLine();
 
-        Console::WriteLine("Œ·ıÓ‰ œ À:");
+        Console::WriteLine("RRL:");
         BinaryTreeNode<T>::InOrderRightLeft(node, func);
         Console::WriteLine();
 
-        Console::WriteLine("Œ·ıÓ‰ Àœ :");
+        Console::WriteLine("LRR:");
         BinaryTreeNode<T>::PostOrderLeftRight(node, func);
         Console::WriteLine();
 
-        Console::WriteLine("Œ·ıÓ‰ œÀ :");
+        Console::WriteLine("RLR:");
         BinaryTreeNode<T>::PostOrderRightLeft(node, func);
         Console::WriteLine();
     };

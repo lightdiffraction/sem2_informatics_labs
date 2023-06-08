@@ -166,25 +166,31 @@ namespace Lab
             return result;
         }
 
-        BinaryTreeNode<T>^ Find(T value, int (*comparer)(T^ value1, T^ value2))
+        BinaryTreeNode<T>^ Find(T^ value, int (*comparer)(T^ value1, T^ value2))
         {
-            BinaryTreeNode<T>^ node = this;
-            while (node != nullptr)
+            return Find(this, value, comparer);
+        }
+
+        BinaryTreeNode<T>^ Find(BinaryTreeNode<T>^ node, T^ value, int (*comparer)(T^ value1, T^ value2))
+        {
+            if (node == nullptr)
             {
-                if (comparer(node->value, value) == 0)
-                {
-                    return node;
-                }
+                return nullptr;
+            }
 
-                if (comparer(node->value, value) < 0)
-                {
-                    node = node->right;
-                }
+            if (comparer(node->value, value) == 0)
+            {
+                return node;
+            }
 
-                if (comparer(node->value, value) > 0)
-                {
-                    node = node->left;
-                }
+            if (comparer(node->value, value) < 0)
+            {
+                return Find(node->right, value, comparer);
+            }
+
+            if (comparer(node->value, value) > 0)
+            {
+                return Find(node->left, value, comparer);
             }
 
             return nullptr;
@@ -209,7 +215,7 @@ namespace Lab
             return newTree;
         }
 
-        BinaryTreeNode^ Remove(T^ value, int (*comparer)(T^ value1, T^ value2))
+        BinaryTreeNode<T>^ Remove(T^ value, int (*comparer)(T^ value1, T^ value2))
         {
             if (comparer(this->value, value) == 0 && this->right == nullptr && this->left == nullptr)
             {
@@ -268,7 +274,6 @@ namespace Lab
             }
             return;
         }
-
 
         T^ FindMin(BinaryTreeNode<T>^ parent)
         {
@@ -340,31 +345,31 @@ namespace Lab
             return result;
         }
 
-        void static PreOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static PreOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
                 return;
             }
 
-            func(*(node->value));
+            func(node->value);
             PreOrderLeftRight(node->left, func);
             PreOrderLeftRight(node->right, func);
         }
 
-        void static PreOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static PreOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
                 return;
             }
 
-            func(*(node->value));
+            func(node->value);
             PreOrderRightLeft(node->right, func);
             PreOrderRightLeft(node->left, func);
         }
 
-        void static InOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static InOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
@@ -372,11 +377,11 @@ namespace Lab
             }
 
             InOrderLeftRight(node->left, func);
-            func(*(node->value));
+            func(node->value);
             InOrderLeftRight(node->right, func);
         }
 
-        void static InOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static InOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
@@ -384,11 +389,11 @@ namespace Lab
             }
 
             InOrderRightLeft(node->right, func);
-            func(*(node->value));
+            func(node->value);
             InOrderRightLeft(node->left, func);
         }
 
-        void static PostOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static PostOrderLeftRight(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
@@ -397,10 +402,10 @@ namespace Lab
 
             PostOrderLeftRight(node->left, func);
             PostOrderLeftRight(node->right, func);
-            func(*(node->value));
+            func(node->value);
         }
 
-        void static PostOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T value))
+        void static PostOrderRightLeft(BinaryTreeNode<T>^ node, void (*func)(T^ value))
         {
             if (node == nullptr)
             {
@@ -409,7 +414,7 @@ namespace Lab
 
             PostOrderRightLeft(node->right, func);
             PostOrderRightLeft(node->left, func);
-            func(*(node->value));
+            func(node->value);
         }
 
         void Map(void (*func)(array<T^>^, int), int (*comparer)(T^ value1, T^ value2))
@@ -513,40 +518,47 @@ namespace Lab
 
         BinaryTreeNode<T>^ RotateLeft(BinaryTreeNode<T>^ node)
         {
-            BinaryTreeNode<T>^ result;
-            BinaryTreeNode<T>^ temp;
-            result = node->right;
-
-            if (node->right->left != nullptr && node->right->right != nullptr)
+            try
             {
-                temp = node->right->left;
-                node->right->left = node;
-                node->right = temp;
-            }
-            else if (node->right->right != nullptr)
-            {
-                node->right->left = node;
-                node->right = nullptr;
-            }
-            else if (node->left->right != nullptr)
-            {
-                node->left->left = node;
-                node->left = nullptr;
-            }
+                BinaryTreeNode<T>^ result;
+                BinaryTreeNode<T>^ temp;
+                result = node->right;
 
-            if (result->left != nullptr)
-            {
-                result->left->parent = result;
+                if (node->right->left != nullptr && node->right->right != nullptr)
+                {
+                    temp = node->right->left;
+                    node->right->left = node;
+                    node->right = temp;
+                }
+                else if (node->right->right != nullptr)
+                {
+                    node->right->left = node;
+                    node->right = nullptr;
+                }
+                else if (node->left != nullptr && node->left->right != nullptr)
+                {
+                    node->left->left = node;
+                    node->left = nullptr;
+                }
+
+                if (result->left != nullptr)
+                {
+                    result->left->parent = result;
+                }
+
+                if (result->right != nullptr)
+                {
+                    result->right->parent = result;
+                }
+
+                result->parent = nullptr;
+
+                return result;
             }
-
-            if (result->right != nullptr)
+            catch (NullReferenceException^ e)
             {
-                result->right->parent = result;
+                return nullptr;
             }
-
-            result->parent = nullptr;
-
-            return result;
         }
 
         BinaryTreeNode<T>^ RotateRight(BinaryTreeNode<T>^ node)

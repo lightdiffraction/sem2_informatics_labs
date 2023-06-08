@@ -62,7 +62,7 @@ namespace Lab
 
         while (true)
         {
-            Console::Write("Enter operation: insert, extract, find, remove, exit: ");
+            Console::Write("Enter operation: insert, extract, find, remove, tostring, exit: ");
             String^ operation = Console::ReadLine();
 
             if (operation == "insert")
@@ -109,7 +109,7 @@ namespace Lab
                 String^ result = gcnew String("");
                 if (command == "йко")
                 {
-                    result = priorityQueue->PreOrderLeftRight(0, "");
+                    result = priorityQueue->PreOrderLeftRight(0, "", ComplexToString);
                 }
                 if (command == "йок")
                 {

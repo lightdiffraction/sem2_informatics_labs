@@ -2,13 +2,13 @@ using namespace Lab;
 
 namespace Lab
 {
-    ref class IntBinaryTreeProcessor
+    ref class ComplexBinaryTreeProcessor
     {
     public:
-        
+
         static void Process()
         {
-            BinaryTreeNode<Int32>^ node = ReadIntBinaryTree();
+            BinaryTreeNode<Complex>^ node = ReadComplexBinaryTree();
 
             while (true)
             {
@@ -22,17 +22,17 @@ namespace Lab
                 if (command == "insert")
                 {
                     node = InsertNode(node);
-                    OrderBinaryTree<Int32>(node, WriteIntTreeNode);
+                    OrderBinaryTree<Complex>(node, WriteComplexTreeNode);
                 }
 
                 if (command == "order")
                 {
-                    OrderAllBinaryTree<Int32>(node, WriteIntTreeNode);
+                    OrderAllBinaryTree<Complex>(node, WriteComplexTreeNode);
                 }
 
                 if (command == "print")
                 {
-                    OrderBinaryTree<Int32>(node, WriteIntTreeNode);
+                    OrderBinaryTree<Complex>(node, WriteComplexTreeNode);
                 }
 
                 if (command == "find")
@@ -43,14 +43,14 @@ namespace Lab
                 if (command == "remove")
                 {
                     RemoveNode(node);
-                    OrderBinaryTree<Int32>(node, WriteIntTreeNode);
+                    OrderBinaryTree<Complex>(node, WriteComplexTreeNode);
                 }
 
                 if (command == "tostring")
                 {
                     String^ command = ReadString("Enter order (RLR, RRL, LRR, RRL, LRR, RLR): ");
                     String^ result = gcnew String("");
-                    result += BinaryTreeStringWriter<Int32>::ToString(command, node, IntTreeNodeToString, result);
+                    result += BinaryTreeStringWriter<Complex>::ToString(command, node, ComplexTreeNodeToString, result);
                     Console::WriteLine(result);
                 }
             }
@@ -58,10 +58,10 @@ namespace Lab
 
     private:
 
-        static void FindNode(BinaryTreeNode<Int32>^ node)
+        static void FindNode(BinaryTreeNode<Complex>^ node)
         {
-            Int32 value = ReadInt32Value("Find value: ");
-            BinaryTreeNode<Int32>^ result = node->Find(value, IntComparer);
+            Complex^ value = ReadComplex();
+            BinaryTreeNode<Complex>^ result = node->Find(value, ComplexComparer);
 
             if (result == nullptr)
             {
@@ -69,19 +69,21 @@ namespace Lab
                 return;
             }
 
-            Console::WriteLine("Value found: {0}.", result->GetValue());
+            String^ resultString = ComplexToString(result->GetValue());
+
+            Console::WriteLine("Value found: {0}.", resultString);
         }
 
-        static void RemoveNode(BinaryTreeNode<Int32>^ node)
+        static void RemoveNode(BinaryTreeNode<Complex>^ node)
         {
-            Int32 value = ReadInt32Value("Remove value: ");
-            node->Remove(value, IntComparer);
+            Complex^ value = ReadComplex();
+            node->Remove(value, ComplexComparer);
         }
 
-        static BinaryTreeNode<Int32>^ InsertNode(BinaryTreeNode<Int32>^ node)
+        static BinaryTreeNode<Complex>^ InsertNode(BinaryTreeNode<Complex>^ node)
         {
-            Int32^ value = ReadInt32("Insert value: ");
-            BinaryTreeNode<Int32>^ newTree = node->InsertNode(value, IntComparer);
+            Complex^ value = ReadComplex("Insert value: ");
+            BinaryTreeNode<Complex>^ newTree = node->InsertNode(value, ComplexComparer);
             return newTree;
         }
     };

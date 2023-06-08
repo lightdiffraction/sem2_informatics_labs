@@ -402,6 +402,11 @@ namespace Lab
         {
             int i = parentIndex;
 
+            if (i < 0 || i >= arraySequence->GetSize())
+            {
+                return -1;
+            }
+
             int currentPriority = arraySequence->Get(i)->Priority;
 
             if (currentPriority > priority)

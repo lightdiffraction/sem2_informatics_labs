@@ -45,6 +45,14 @@ namespace Lab
                         RemoveNode(node);
                         OrderBinaryTree<Single>(node, WriteFloatTreeNode);
                     }
+
+                    if (command == "tostring")
+                    {
+                        String^ command = ReadString("Enter order (RLR, RRL, LRR, RRL, LRR, RLR): ");
+                        String^ result = gcnew String("");
+                        result += BinaryTreeStringWriter<Single>::ToString(command, node, FloatTreeNodeToString, result);
+                        Console::WriteLine(result);
+                    }
                 }
             };
 

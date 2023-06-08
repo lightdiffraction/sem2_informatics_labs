@@ -10,5 +10,17 @@ namespace Lab
 		{
 			FloatBinaryTreeProcessor::Process();
 		}
+		else if (elementType == "complex")
+		{
+			ComplexBinaryTreeProcessor::Process();
+		}
+		else if (elementType == "string")
+		{
+			StringBinaryTreeProcessor::Process();
+		}
+		else if (elementType == "student")
+		{
+			StudentBinaryTreeProcessor::Process();
+		}
 	}
 }

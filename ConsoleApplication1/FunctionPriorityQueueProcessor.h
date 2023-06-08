@@ -130,7 +130,7 @@ namespace Lab
 
         while (true)
         {
-            Console::Write("Enter operation: insert, extract, exit: ");
+            Console::Write("Enter operation: insert, extract, tostring, exit: ");
             String^ operation = Console::ReadLine();
 
             if (operation == "insert")
@@ -149,7 +149,36 @@ namespace Lab
                 WriteFunctionPriorityQueue<int>(priorityQueue);
             }
 
-
+            if (operation == "tostring")
+            {
+                String^ command = ReadString("Enter order (ÊËÏ, ÊÏË, ËÊÏ, ÏÊË, ËÏÊ, ÏËÊ): ");
+                String^ result = gcnew String("");
+                if (command == "ÊËÏ")
+                {
+                    result = priorityQueue->PreOrderLeftRight(0, "", FuncToString);
+                }
+                if (command == "ÊÏË")
+                {
+                    result = priorityQueue->PreOrderRightLeft(0, "", FuncToString);
+                }
+                if (command == "ËÊÏ")
+                {
+                    result = priorityQueue->InOrderLeftRight(0, "", FuncToString);
+                }
+                if (command == "ÏÊË")
+                {
+                    result = priorityQueue->InOrderRightLeft(0, "", FuncToString);
+                }
+                if (command == "ËÏÊ")
+                {
+                    result = priorityQueue->PostOrderLeftRight(0, "", FuncToString);
+                }
+                if (command == "ÏËÊ")
+                {
+                    result = priorityQueue->PostOrderRightLeft(0, "", FuncToString);
+                }
+                Console::WriteLine(result);
+            }
 
             if (operation == "exit")
             {

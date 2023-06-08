@@ -867,7 +867,7 @@ namespace Lab
 			item1->Value->SetFirstName("A1");
 			item1->Value->SetMiddleName("B1");
 			item1->Value->SetLastName("C1");
-			item1->Value->SetDate(Convert::ToDateTime("01/02/2003"));
+			item1->Value->SetDate(Convert::ToDateTime("01/01/2003"));
 			item1->Priority = 3;
 			priorityQueue->Insert(item1);
 
@@ -879,7 +879,7 @@ namespace Lab
 			assert(arraySequence->Get(0)->Value->GetMiddleName() == "B1");
 			assert(arraySequence->Get(0)->Value->GetLastName() == "C1");
 			assert(arraySequence->Get(0)->Value->GetDate().Day == 1);
-			assert(arraySequence->Get(0)->Value->GetDate().Month == 2);
+			assert(arraySequence->Get(0)->Value->GetDate().Month == 1);
 			assert(arraySequence->Get(0)->Value->GetDate().Year == 2003);
 			assert(arraySequence->Get(0)->Priority == 3);
 		}

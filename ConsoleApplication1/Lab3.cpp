@@ -23,13 +23,13 @@
 #include "ListSequence.h"
 #include "Functions.h"
 #include "Polynomial.h"
-#include "Comparers.h"
 #include "BinaryTreeNode.h"
 #include "BinaryTreeStringWriter.h"
 #include "Complex.h"
 #include "Person.h"
 #include "Student.h"
 #include "Matrix.h"
+#include "Comparers.h"
 #include "GetOneFunctions.h"
 #include "Readers.h"
 #include "TypeWriters.h"
@@ -62,12 +62,16 @@
 #include "BinaryTreeOrder.h"
 #include "IntBinaryTreeProcessor.h"
 #include "FloatBinaryTreeProcessor.h"
+#include "ComplexBinaryTreeProcessor.h"
+#include "StringBinaryTreeProcessor.h"
+#include "StudentBinaryTreeProcessor.h"
 #include "BinaryTreeProcessor.h"
 #include "IntBinaryTreeTests.h"
 #include "FloatBinaryTreeTests.h"
 #include "PolynomialTests.h"
 #include "PriorityQueueTests.h"
-
+#include "BinaryTreeTime.h"
+#include "PriorityQueueTime.h"
 
 using namespace System;
 using namespace System::Collections;
@@ -85,6 +89,12 @@ namespace Lab
         IntBinaryTreeTests::Run();
         FloatBinaryTreeTests::Run();
     }
+
+    void CheckTime()
+    {
+        //BinaryTreeTime::Run();
+        PriorityQueueTime::Run();
+    }
 }
 
     //right click project name in the solution explorer "Lab3" / Properties / Configuration properties / Debugging / Command Arguments -> type "tests"
@@ -93,6 +103,10 @@ namespace Lab
         if (argc == 2 && strcmp(argv[1], "tests") == 0)
         {
             RunTests();
+        }
+        else if (argc == 2 && strcmp(argv[1], "time") == 0)
+        {
+            CheckTime();
         }
         else
         {

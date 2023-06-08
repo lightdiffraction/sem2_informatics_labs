@@ -266,7 +266,9 @@ namespace Lab
 			tree = tree->InsertNode(5.0f, SingleComparer);
 			tree = tree->InsertNode(6.0f, SingleComparer);
 
-			BinaryTreeNode<Single>^ node = tree->Find(2.0, SingleComparer);
+			Single value = 2.0f;
+
+			BinaryTreeNode<Single>^ node = tree->Find(value, SingleComparer);
 			BinaryTreeNode<Single>^ newTree = node->GetSubTree(node, SingleComparer);
 
 			assert(*(newTree->GetValue()) == 2.0);

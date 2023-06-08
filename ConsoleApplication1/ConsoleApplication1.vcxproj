@@ -141,6 +141,8 @@
     <ClInclude Include="BinaryTreeOrder.h" />
     <ClInclude Include="BinaryTreeProcessor.h" />
     <ClInclude Include="BinaryTreeStringWriter.h" />
+    <ClInclude Include="BinaryTreeTime.h" />
+    <ClInclude Include="ComplexBinaryTreeProcessor.h" />
     <ClInclude Include="FloatBinaryTreeProcessor.h" />
     <ClInclude Include="FloatBinaryTreeTests.h" />
     <ClInclude Include="IntBinaryTreeTests.h" />
@@ -180,7 +182,10 @@
     <ClInclude Include="PriorityQueueProcessor.h" />
     <ClInclude Include="PriorityQueueStringWriter.h" />
     <ClInclude Include="PriorityQueueTests.h" />
+    <ClInclude Include="PriorityQueueTime.h" />
     <ClInclude Include="Readers.h" />
+    <ClInclude Include="StringBinaryTreeProcessor.h" />
+    <ClInclude Include="StudentBinaryTreeProcessor.h" />
     <ClInclude Include="TypeReaders.h" />
     <ClInclude Include="Sequence.h" />
     <ClInclude Include="StringPriorityQueueProcessor.h" />

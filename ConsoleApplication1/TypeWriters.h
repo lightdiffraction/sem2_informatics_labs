@@ -12,7 +12,7 @@ namespace Lab
 		Console::WriteLine(value);
 	}
 
-	void WriteIntTreeNode(Int32 value)
+	void WriteIntTreeNode(Int32^ value)
 	{
 		Console::Write(" {0} ", value);
 	}
@@ -22,7 +22,7 @@ namespace Lab
 		Console::WriteLine(value);
 	}
 
-	void WriteFloatTreeNode(Single value)
+	void WriteFloatTreeNode(Single^ value)
 	{
 		Console::Write(" {0} ", value);
 	}
@@ -32,9 +32,19 @@ namespace Lab
 		Console::WriteLine(value);
 	}
 
+	void WriteStringTreeNode(String^ value)
+	{
+		Console::Write(" {0} ", value);
+	}
+
 	void WriteComplex(Complex^ value)
 	{
 		Console::WriteLine("{0}+{1}i", value->Real, value-> Imaginary);
+	}
+
+	void WriteComplexTreeNode(Complex^ value)
+	{
+		Console::Write(" {0}+{1}i ", value->Real, value->Imaginary);
 	}
 
 	void WriteIntOperand(Int32^ value)
@@ -65,6 +75,11 @@ namespace Lab
 			String::Format("{0:dd/MM/yyyy}", value->GetDate()));
 	}
 
+	void WriteStudentTreeNode(Student^ value)
+	{
+		Console::Write(" {0} {1} ", value->GetFirstName(), value->GetLastName());
+	}
+
 	void WriteMatrix(Matrix<int>^ value)
 	{
 		for (int i = 0; i < value->GetSize(); i++)
@@ -84,9 +99,9 @@ namespace Lab
 		return value->ToString();
 	}
 
-	String^ FloatToString(float value)
+	String^ FloatToString(Single^ value)
 	{
-		return value.ToString();
+		return value->ToString();
 	}
 
 	String^ StringToString(String^ value)
@@ -94,9 +109,14 @@ namespace Lab
 		return value;
 	}
 
-	String^ StudentToString(Student value)
+	String^ StudentToString(Student^ value)
 	{
-		return	value.GetFirstName(), value.GetLastName(), String::Format("{0:dd/MM/yyyy}", value.GetDate());
+		return	value->GetFirstName() + " " + value->GetLastName() + String::Format("{0:dd/MM/yyyy}", value->GetDate());
+	}
+
+	String^ StudentTreeNodeToString(Student^ value)
+	{
+		return	" " + value->GetFirstName() + " " + value->GetLastName() + " ";
 	}
 
 	String^ ComplexToString(Complex^ value)
@@ -104,18 +124,28 @@ namespace Lab
 		return value->Real->ToString() + "+" + value->Imaginary->ToString() + "i";
 	}
 
+	String^ ComplexTreeNodeToString(Complex^ value)
+	{
+		return " " + value->Real->ToString() + "+" + value->Imaginary->ToString() + "i ";
+	}
+
 	String^ FuncToString(Func<int>^ value)
 	{
 		return value->ToString();
 	}
 	
-	String^ IntTreeNodeToString(Int32 value)
+	String^ IntTreeNodeToString(Int32^ value)
 	{
-		return value.ToString();
+		return (*value).ToString();
 	}
 
-	String^ FloatTreeNodeToString(Single value)
+	String^ FloatTreeNodeToString(Single^ value)
 	{
-		return value.ToString();
+		return (*value).ToString();
+	}
+
+	String^ StringTreeNodeToString(String^ value)
+	{
+		return value;
 	}
 }
